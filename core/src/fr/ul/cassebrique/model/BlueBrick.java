@@ -10,8 +10,8 @@ import fr.ul.cassebrique.dataFactories.TextureFactory;
  */
 
 public class BlueBrick extends Brick{
-    public BlueBrick(Vector2 pos, int nbCoups, GameWorld gw) {
-        super(pos, nbCoups, gw);
+    public BlueBrick(Vector2 pos, GameWorld gw) {
+        super(pos, 0, gw);
     }
 
     public String getType(){

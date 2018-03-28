@@ -1,9 +1,6 @@
 package fr.ul.cassebrique.model;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.VertexAttribute;
 import com.badlogic.gdx.graphics.VertexAttributes;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,7 +13,6 @@ import com.badlogic.gdx.graphics.g3d.ModelInstance;
 import com.badlogic.gdx.graphics.g3d.attributes.ColorAttribute;
 import com.badlogic.gdx.graphics.g3d.attributes.TextureAttribute;
 import com.badlogic.gdx.graphics.g3d.environment.DirectionalLight;
-import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
 import com.badlogic.gdx.graphics.g3d.utils.ModelBuilder;
 import com.badlogic.gdx.math.Quaternion;
 import com.badlogic.gdx.math.Vector2;
@@ -25,10 +21,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-
-import java.awt.TextComponent;
 
 import fr.ul.cassebrique.dataFactories.TextureFactory;
 
@@ -78,7 +71,6 @@ public class Ball {
         imsBoule = atlasBoule.createSprites("boule");
         this.gw = gw;
         tEcoule = System.currentTimeMillis();
-       // vitesse = new Vector2(200,-400 * gw.getPIXELS_TO_METERS());
 
         //Bille3D
         ModelBuilder modelBuilder = new ModelBuilder();
@@ -97,7 +89,7 @@ public class Ball {
 
     public void calculerIm(){
         float dist;
-        float rayon = this.rayon;
+        float rayon = Ball.rayon;
         dist = body.getLinearVelocity().len() * tEcoule;
         float angleRot = dist/rayon;
         double imsPar = angleRot * imsBoule.size / 2 * Math.PI;
@@ -151,9 +143,6 @@ public class Ball {
 
     public boolean isGone(){
        Vector2 pos = body.getPosition();
-       if (pos.y < 0 - TextureFactory.getTexBall().getHeight() * 2 * gw.getPIXELS_TO_METERS()){
-           return true;
-       }
-        return false;
+        return pos.y < 0 - TextureFactory.getTexBall().getHeight() * 2 * gw.getPIXELS_TO_METERS();
     }
 }

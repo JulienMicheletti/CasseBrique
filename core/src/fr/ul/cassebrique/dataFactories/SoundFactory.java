@@ -2,7 +2,6 @@ package fr.ul.cassebrique.dataFactories;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
 
 /**
  * Created by Julien on 09/03/2018.

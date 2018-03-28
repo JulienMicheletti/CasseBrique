@@ -74,31 +74,22 @@ public class GameWorld {
         if (wall.toucheSize() > 0){
             wall.maj();
         }
-        if (clean == true){
+        if (clean){
             wall.clean();
         }
 
     }
 
     public boolean endBall(){
-        if (bille.size() == 1 && billeAct.isGone()){
-            return true;
-        }
-        return false;
+        return bille.size() == 1 && billeAct.isGone();
     }
 
     public boolean endWall(){
-        if (wall.isEmpty()){
-            return true;
-        }
-        return false;
+        return wall.isEmpty();
     }
 
     public boolean isGone(){
-        if (billeAct.isGone() && bille.size() > 1){
-            return true;
-        }
-        return false;
+        return billeAct.isGone() && bille.size() > 1;
     }
 
 

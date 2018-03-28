@@ -1,7 +1,5 @@
 package fr.ul.cassebrique.desktop;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import fr.ul.cassebrique.CasseBrique;

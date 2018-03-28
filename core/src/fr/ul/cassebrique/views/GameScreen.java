@@ -1,32 +1,17 @@
 package fr.ul.cassebrique.views;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g3d.utils.CameraInputController;
-import com.badlogic.gdx.input.GestureDetector;
-import com.badlogic.gdx.math.Matrix4;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Timer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-import java.util.TimerTask;
-
 import fr.ul.cassebrique.controls.Listener;
 import fr.ul.cassebrique.dataFactories.SoundFactory;
 import fr.ul.cassebrique.dataFactories.TextureFactory;
-import fr.ul.cassebrique.model.BackGround;
 import fr.ul.cassebrique.model.GameState;
 import fr.ul.cassebrique.model.GameWorld;
 import fr.ul.cassebrique.model.Racket;
@@ -44,13 +29,11 @@ public class GameScreen extends ScreenAdapter {
     private Timer timer;
     private boolean tempo;
     private Viewport vp;
-    private Listener listener;
-    private boolean pause;
 
     public GameScreen(){
         timer = new Timer();
-        pause = false;
-        listener = new Listener(this);
+        boolean pause = false;
+        Listener listener = new Listener(this);
         Gdx.input.setInputProcessor(listener);
         tempo = false;
         timerTask = new Timer.Task() {
@@ -95,8 +78,8 @@ public class GameScreen extends ScreenAdapter {
                 sb.begin();
                 sb.draw(TextureFactory.getTexLossBall(), 300, 300);
                 sb.end();
-                if (tempo == false) {
-                    timer.schedule(timerTask, 3);
+                if (!tempo) {
+                    Timer.schedule(timerTask, 3);
                 }
                 tempo = true;
             } else if (gs.getState().equals(GameState.State.GameOver)) {
@@ -104,8 +87,8 @@ public class GameScreen extends ScreenAdapter {
                 sb.begin();
                 sb.draw(TextureFactory.getTexGameOver(), 300, 300);
                 sb.end();
-                if (tempo == false) {
-                    timer.schedule(timerTask, 3);
+                if (!tempo) {
+                    Timer.schedule(timerTask, 3);
                 }
                 tempo = true;
             } else if (gs.getState().equals(GameState.State.Won)) {
@@ -113,8 +96,8 @@ public class GameScreen extends ScreenAdapter {
                 sb.begin();
                 sb.draw(TextureFactory.getTexWin(), 300, 300);
                 sb.end();
-                if (tempo == false) {
-                    timer.schedule(timerTask, 3);
+                if (!tempo) {
+                    Timer.schedule(timerTask, 3);
                 }
                 tempo = true;
             }

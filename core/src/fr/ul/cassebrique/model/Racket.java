@@ -6,9 +6,6 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.Transform;
-import java.awt.TextComponent;
-import java.lang.Cloneable;
 
 import fr.ul.cassebrique.dataFactories.TextureFactory;
 
@@ -21,15 +18,9 @@ public class Racket {
     private Vector2 pos;
     private int length;
     private int width;
-    private BodyDef bdef;
     private Body body;
-    private BodyDef bdef2;
     private Body bgauche;
-    private BodyDef bdef3;
     private Body bdroite;
-    private Vector2[] vertices;
-    private PolygonShape shape;
-   private FixtureDef fixture;
 
 
     public Racket(GameWorld gw) {
@@ -40,8 +31,8 @@ public class Racket {
         pos.x = TextureFactory.getTexBack().getWidth() / 2 - width / 2 - TextureFactory.getTexBorder().getWidth() / 2;
         pos.y = 50;
 
-        vertices = new Vector2[4];
-        bdef = new BodyDef();
+        Vector2[] vertices = new Vector2[4];
+        BodyDef bdef = new BodyDef();
         bdef.type = BodyDef.BodyType.StaticBody;
         body = gw.world.createBody(bdef);
         bdroite = gw.world.createBody(bdef);
@@ -49,8 +40,8 @@ public class Racket {
 
         //bmilieu
         body.setTransform((pos.x + length / 2) * gw.getPIXELS_TO_METERS(),(pos.y - length / 2)* gw.getPIXELS_TO_METERS(), 0);
-        fixture = new FixtureDef();
-        shape = new PolygonShape();
+        FixtureDef fixture = new FixtureDef();
+        PolygonShape shape = new PolygonShape();
         fixture.shape = shape;
         fixture.density = 1;
         fixture.restitution = 1;
@@ -114,24 +105,8 @@ public class Racket {
         pos.x += 10;
     }
 
-    public void goAccLeft(){
-        pos.x -= 5;
-    }
-
-    public void goAccRight(){
-        pos.x += 5;
-    }
-
-    public GameWorld getGw() {
-        return gw;
-    }
-
     public float getPosAbs() {
         return pos.x;
-    }
-
-    public float getPosOrd(){
-        return pos.y;
     }
 
     public int getLength() {
