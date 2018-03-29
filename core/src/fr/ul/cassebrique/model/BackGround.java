@@ -31,7 +31,7 @@ public class BackGround {
         Vector2 posHD = new Vector2(TextureFactory.getTexBack().getWidth() - TextureFactory.getTexBorder().getHeight()*2  - TextureFactory.getTexBall().getWidth() / 2, TextureFactory.getTexBack().getHeight() - TextureFactory.getTexBorder().getHeight() - TextureFactory.getTexBall().getWidth() / 2);
         Vector2 posBD = new Vector2(TextureFactory.getTexBack().getWidth() - TextureFactory.getTexBorder().getHeight()*2  - TextureFactory.getTexBall().getWidth() / 2, 0);
         float pts[] = {posBG.x * gw.getPIXELS_TO_METERS(), posBG.y * gw.getPIXELS_TO_METERS(), posHG.x * gw.getPIXELS_TO_METERS(), posHG.y * gw.getPIXELS_TO_METERS(), posHD.x * gw.getPIXELS_TO_METERS(), posHD.y * gw.getPIXELS_TO_METERS(), posBD.x * gw.getPIXELS_TO_METERS(), posBD.y * gw.getPIXELS_TO_METERS()};
-       
+
         shape.createChain(pts);
         body.createFixture(fixture);
         shape.dispose();

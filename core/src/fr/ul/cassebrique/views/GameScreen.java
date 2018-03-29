@@ -128,19 +128,19 @@ public class GameScreen extends ScreenAdapter {
         Racket racket = gw.getRacket();
         float xRack = racket.getPosAbs() ;
         float limitMax = TextureFactory.getTexBack().getWidth() - (TextureFactory.getTexBorder().getWidth() * 2) - racket.getWidth();
-        if (Gdx.input.getAccelerometerY() > 0.5f && !Gdx.input.isTouched() && xRack <= limitMax){
-            racket.goRight();
-        }else if (Gdx.input.getAccelerometerY() < -0.5f && !Gdx.input.isTouched() && xRack >= TextureFactory.getTexBorder().getWidth()){
-            racket.goLeft();
+        if (Gdx.input.getAccelerometerY() > 0 && !Gdx.input.isTouched() && xRack <= limitMax){
+            racket.goRight(Math.abs(Gdx.input.getAccelerometerY()) / 10);
+        }else if (Gdx.input.getAccelerometerY() < 0 && !Gdx.input.isTouched() && xRack >= TextureFactory.getTexBorder().getWidth()){
+            racket.goLeft(Math.abs(Gdx.input.getAccelerometerY()) / 10);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && xRack >= TextureFactory.getTexBorder().getWidth()){
-            racket.goLeft();
+            racket.goLeft(1f);
         } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && xRack <= limitMax) {
-            racket.goRight();
+            racket.goRight(1f);
         }else if (xClic < xRack  && xRack > TextureFactory.getTexBorder().getWidth()&& Gdx.input.isTouched()) {
-            racket.goLeft();
+            racket.goLeft(1f);
         } else if (xClic > xRack + racket.getWidth() && xRack <= limitMax && Gdx.input.isTouched()) {
-            racket.goRight();
+            racket.goRight(1f);
         }
     }
 

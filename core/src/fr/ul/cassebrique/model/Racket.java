@@ -97,12 +97,12 @@ public class Racket {
         pos.y = 50;
     }
 
-    public void goLeft(){
-        pos.x -= 10;
+    public void goLeft(float ratio){
+        pos.x -= 10 * ratio;
     }
 
-    public void goRight(){
-        pos.x += 10;
+    public void goRight(float ratio){
+        pos.x += 10 * ratio;
     }
 
     public float getPosAbs() {
